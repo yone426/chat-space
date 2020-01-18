@@ -36,8 +36,7 @@ Things you may want to cover:
 # groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|groupname|text|null :false|
-|users_id|integer|null :false, foregin_key: true|
+|name|string|null :false|
 - has_many :users, through: :groups_users
 - has_many :messages
 - has_many :groups_users
@@ -53,7 +52,7 @@ Things you may want to cover:
 # messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text||
 |image|string||
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
