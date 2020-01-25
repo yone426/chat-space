@@ -10,11 +10,14 @@
         %li.list
           = link_to edit_user_path(current_user) do
             = icon('fas', 'cog', class: 'icon')
-            
+  
+  
+  
   .groups
-    .groups__box1
-      .groups__box1__title
-        グループ名
-      .groups__box1__text
-        新着メッセージ
-    
+    - current_user.groups.each do |group|
+      .groups__box1
+        = link_to '#' do 
+          .groups__box1__title
+            = group.name
+          .groups__box1__text
+            メッセージはまだありません。
