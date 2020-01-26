@@ -2,42 +2,28 @@
   .main_header
     .main_header__left
       %p.main_header__left__title
-        test
+        = @group.name
       %ul.main_header__left__member
-        member : masa
+        member : 
+        %li
+          - @group.users.each do |user|
+            = user.name
+          
     .main_header__right
       .main_header__right__edit
-        = link_to 'Edit','#'
+        = link_to 'Edit', edit_group_path(@group)
 
   .messages
-    .messages__chat
-      %ul.masseges__chat__user_name
-        %li.name
-          masa
-        %li.date
-          20200119
-      
-      .messages__chat__text_message
-        おはよう!
+    = render @messages
 
-      %ul.masseges__chat__user_name
-        %li.name
-          masa
-        %li.date
-          20200119
-      
-      .messages__chat__text_message
-        今日は夜から雨  
-    
-    
   .form
-    .form__message
-      .form__message__box
-        %input{placeholder: "type a message", type:"text", class: "form__message__box__send"}
-        %label{class: "form__message__box__label"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "form__message__box__label__image"}
-      %input{type:"submit",class: "form__message__btn"}
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'    
 
     
 
