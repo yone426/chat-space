@@ -73,7 +73,10 @@ $(function(){
     })
     .fail(function() {
       alert("error");
-    }); 
+    })
+    .always(function(){
+      $('.form__submit').prop('disabled', false);
+    });
   })
   var reloadMessages = function() {
     last_message_id = $('.message:last').data("message-id");
@@ -101,4 +104,5 @@ $(function(){
     setInterval(reloadMessages, 7000);
   }  
 });
+
 
